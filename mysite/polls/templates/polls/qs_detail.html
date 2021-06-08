@@ -1,0 +1,15 @@
+{% extends 'polls/base.html' %}
+{% block content %}
+
+<h1> {{question.question_text}}</h1>
+<form action="{% url 'votes' question.id %}" method="post">
+    {% csrf_token %}
+    <ul>
+        {% for i in question.choice_set.all %}
+            <li><input type="radio" value="{{i.id}}" name="choice"> {{i.choice_text}} </li>
+        {% endfor %}
+    </ul>
+    <p><input type="submit" value='Gửi'></p>
+</form>
+
+{% endblock %}

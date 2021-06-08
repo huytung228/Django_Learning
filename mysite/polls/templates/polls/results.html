@@ -1,0 +1,9 @@
+{% extends 'polls/base.html' %}
+
+{% block content %}
+<h1>{{question.question_text}}</h1>
+{% for i in question.choice_set.all %}
+    <p>{{i.choice_text}}: <span style="color:brown">{{i.vote}}</span></p>
+{% endfor %}
+<span style="color: red;"><a href="{% url 'detail' question.id %}"><p>Vote Tiep</p></a></span>
+{% endblock %}

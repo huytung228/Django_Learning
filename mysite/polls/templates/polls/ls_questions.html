@@ -1,0 +1,15 @@
+{% extends 'polls/base.html' %}
+{% block content %}
+
+<h1>List questions in database</h1>
+<ul>
+    {% if list_question%}
+        {% for i in list_question %}
+            <a href="{% url 'detail' i.id %}"><li>{{i.question_text}}</li></a>
+        {% endfor %}
+    {% else %}
+        <h3 style="color: red;"> Khong co cau hoi nao </h3>
+    {% endif %}
+</ul>
+
+{% endblock %}
